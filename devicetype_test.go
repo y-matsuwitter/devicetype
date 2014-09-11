@@ -42,3 +42,22 @@ func ExampleIsIPhone() {
 	// true
 	// false
 }
+
+type isAndroidResult struct {
+	in  string
+	out bool
+}
+
+var isAndroidResults = []isAndroidResult{
+	{"iPhone; iOS 7.1.1; Scale/2.00", false},
+	{"Mozilla/5.0 (Linux; Android 4.2.2; HogePhone)", true},
+}
+
+func TestIsAndroid(t *testing.T) {
+	for _, c := range isAndroidResults {
+		dd := DeviceDetector{c.in}
+		if dd.IsAndroid() != c.out {
+			t.Errorf("IsAndroid should return %t for %s, got %t", c.out, c.in, dd.IsAndroid())
+		}
+	}
+}
