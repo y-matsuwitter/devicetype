@@ -1,6 +1,7 @@
 package devicetype
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -22,4 +23,22 @@ func TestDeviceType(t *testing.T) {
 			t.Errorf("DeviceType should return %t, got %t", result.out, dd.DeviceType())
 		}
 	}
+}
+
+func BenchmarkIsIPhone(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		dd := DeviceDetector{"iPhone"}
+		dd.IsIPhone()
+	}
+}
+
+func ExampleIsIPhone() {
+	dd := DeviceDetector{"iPhone"}
+	fmt.Println(dd.IsIPhone())
+	dd = DeviceDetector{"Android"}
+	fmt.Println(dd.IsIPhone())
+
+	// Output:
+	// true
+	// false
 }
