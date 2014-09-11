@@ -1,3 +1,21 @@
+/*
+devicetype detects device type like iPhone, Android, etc... from UserAgent.
+
+Usage:
+	package main
+	import (
+		"fmt"
+
+		"github.com/y-matsuwitter/devicetype"
+	)
+
+	func main() {
+		ua := "Mozilla/5.0 (Linux; Android 4.2.2; HogePhone)"
+		dd := devicetype.DeviceType{ua}
+		fmt.Println(dd.IsAndroid()) // true
+	}
+*/
+
 package devicetype
 
 // DeviceType is a const for each device.
